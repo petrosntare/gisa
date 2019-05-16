@@ -1,0 +1,38 @@
+-------------------------Task to work on----------------------------------------
+
+        -Create a model on INVESTMENT page 
+        -Create a model on ACCOUNT page
+        -Mask passwords                         ==== Done!
+        -Logging with log4j                     ==== Done!
+        -Create a page for USERS                ==== Done!
+        -Create a page for Login                ==== Done!
+        -Create a page for Account              ==== Done!
+        -Had-code menu in java class
+        -Make ID number unique on account       
+        -Make all DAO select from Map           ==== Done!
+--------------------------------------------------------------------------------
+Catch this exception:
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '250788312609' for key 'phone_UNIQUE'
+--------------------------------------------------------------------------------
+The description of Response codes
+<COMMAND>
+    <RESPONDERSTATUS>105</RESPONDERSTATUS>=======??
+    <REQUESTSTATUS>101</REQUESTSTATUS>=======??
+    <REQUESTSTATUSDESC>Pending</REQUESTSTATUSDESC>
+</COMMAND>
+
+--------------------------------------------------------------------------------
+What if i don't have all this platform(mtn,tigo,aitel,bank,...)
+
+--------------------------------------------------------------------------------
+changes we made
+-user table make password field varchar(300)
+-account table make password field varchar(300)
+-change login to use new method to encrypt password: getsecurepassword()
+-add status to user table
+-created payment table
+ID=1198880089734023
+
+-added application initializer listener
+-created tax attribute on payment table
+-added in_sys,in_circulation,in_investment_world attributes on investment table

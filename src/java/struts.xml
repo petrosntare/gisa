@@ -1,0 +1,62 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.action.extension" value="htm"/>
+    <package name="main" extends="struts-default">
+        <!--Declaration of Interceptor-->
+        <interceptors>
+            <interceptor name="authenticationInterceptor" class="com.gisainvestment.action.interceptor.AuthenticationInterceptor"/>
+            <interceptor-stack name="secureStack">
+                <interceptor-ref name="authenticationInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        <action name="user*" class="com.gisainvestment.action.UserAction" method="{1}">
+            <result name="error">/content/login.jsp</result>
+            <result name="admin" type="redirect">navadminHomePage.htm</result>
+            <result name="finance" type="redirect">navfinanceHomePage.htm</result>
+            <result name="accounting" type="redirect">navaccountingHomePage.htm</result>
+            <!--<result name="logout">/content/login.jsp</result>-->
+            <result name="logout" type="redirect">navloginPage.htm</result>
+        </action>
+        <action name="nav*" class="com.gisainvestment.action.Navigation" method="{1}">
+            <interceptor-ref name="secureStack"/>
+            <result name="passwordRecovery">/content/page_login_password_recover.jsp</result>
+            <result name="adminHome">/content/dashboard_admin.jsp</result>
+            <result name="financeHome">/content/dashboard_finance.jsp</result>
+            <result name="accountingHome">/content/dashboard_accounting.jsp</result>
+            <result name="investment" type="redirect">investview.htm</result>
+            <result name="investmentReadytobePayed" type="redirect">investreadyToBePayed.htm</result>
+            <result name="PaymentPage" type="redirect">paymentviewAll.htm</result>
+            <result name="PaymentUploadPage">/content/page_upload_payments.jsp</result>
+            <result name="accountAll" type="redirect">accountgetAll.htm</result>
+            <result name="loginPage">/content/login.jsp</result>
+        </action>    
+        <action name="invest*" class="com.gisainvestment.action.InvestmentAction" method="{1}">
+            <result name="singleticket">/content/page_investment_single.jsp</result>
+            <result name="view">/content/page_investment.jsp</result>
+            <result name="singlereference">/content/page_investment_single_reference.jsp</result>
+            <result name="readyToBePayed">/content/page_investment_Ready_tobe_Payed.jsp</result>
+            <result name="download" type = "stream">
+                <param name="contentDisposition">attachment;filename=${excelFileName}</param>
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="bufferSize">1024</param>                
+            </result>
+            <result name="faildownload">/content/page_investment_Ready_tobe_Payed.jsp</result>
+        </action>
+        <action name="account*" class="com.gisainvestment.action.AccountAction" method="{1}">
+            <result name="success">/content/page_accounts.jsp</result>
+            <result name="error">/content/page_accounts.jsp</result>
+            <result name="reset">/content/page_accounts.jsp</result>
+            <result name="resetSingle">/content/page_accounts.jsp</result>
+        </action>
+        <action name="payment*" class="com.gisainvestment.action.PaymentAction" method="{1}">
+            <result name="upload">/content/page_upload_payments.jsp</result>
+            <result name="view">/content/page_payments.jsp</result>
+        </action>
+        
+    </package>    
+</struts>

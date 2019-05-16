@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gisadb</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">itdc@SYS=2</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <!--CLASS MAPPING--> 
+        <mapping class="com.gisainvestment.domain.Menu"/>
+        <mapping class="com.gisainvestment.domain.Choice"/>
+        <mapping class="com.gisainvestment.domain.Account"/>
+        <mapping class="com.gisainvestment.domain.Investor"/>
+        <mapping class="com.gisainvestment.domain.Investment"/>
+        <mapping class="com.gisainvestment.domain.Users"/>
+        <mapping class="com.gisainvestment.thirdparties.MoMo"/>
+        <mapping class="com.gisainvestment.domain.SmsMessage"/>
+        <mapping class="com.gisainvestment.domain.Subscriber"/>
+        <mapping class="com.gisainvestment.domain.Payment"/>
+    </session-factory>
+</hibernate-configuration>
